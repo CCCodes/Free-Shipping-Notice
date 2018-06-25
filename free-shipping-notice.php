@@ -44,7 +44,7 @@ function fsn_options_page() {
         <form method="post" action="options.php">
             <?php settings_fields('fsn_settings'); ?>
             <?php do_settings_sections('fsn_settings'); ?>
-            Color (hex): <input type="text" name="fsn_color" value="<?php echo get_option('fsn_color');?>"/>
+            Color #<input type="text" name="fsn_color" value="<?php echo get_option('fsn_color');?>" placeholder="ff0000"/>
             <?php submit_button(); ?>
         </form>
     </div>
