@@ -70,7 +70,7 @@ function fsn_options_page() {
             <?php settings_fields('fsn_settings'); ?>
             <?php do_settings_sections('fsn_settings'); ?>
             <label for="fsn-color-picker">Color</label>
-            <input type="text" class="color-picker" name="fsn-options[highlight-color]" id='fsn-color-picker' value="#<?php echo get_option('fsn-options[highlight-color]');?>" placeholder="#ff0000" />
+            <input type="text" class="color-picker" name="fsn-options[highlight-color]" id='fsn-color-picker' value="#ff0000" placeholder="#ff0000" />
             <label for="fsn-shipping-min">Free Shipping Minimum ($)</label>
             <input type="number" name="fsn-options[shipping-min]" id='fsn-shipping-min' value="#<?php echo get_option('fsn-options[shipping-min]');?>" placeholder="50" />
             <?php submit_button(); ?>
