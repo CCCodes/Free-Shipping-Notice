@@ -23,7 +23,7 @@ function fsn_init () {
         add_action( 'wp_head', 'fsn_css' );
         add_action('admin_menu', 'fsn_options');
     } else {
-        add_action('admin_notices', 'fsn_missing_wc')
+        add_action('admin_notices', 'fsn_missing_wc');
     }
 }
 
