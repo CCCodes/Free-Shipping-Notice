@@ -22,11 +22,11 @@ function shipping_notice() {
 }
 
 function fsn_css() {
-  echo "<style type='text/css'>
+  echo ("<style type='text/css'>
 	.freeship {
              font-weight: 500;
-             color: #960740;
-	</style>";
+             color: #" . get_option('fsn_color') . "
+	</style>");
 }
 
 function fsn_options() {
@@ -44,7 +44,7 @@ function fsn_options_page() {
         <form method="post" action="options.php">
             <?php settings_fields('fsn_settings'); ?>
             <?php do_settings_sections('fsn_settings'); ?>
-            <input type="text" name="fsn_color" value="<?php echo get_option('fsn_color');?>"/>
+            Color (hex): <input type="text" name="fsn_color" value="<?php echo get_option('fsn_color');?>"/>
             <?php submit_button(); ?>
         </form>
     </div>
