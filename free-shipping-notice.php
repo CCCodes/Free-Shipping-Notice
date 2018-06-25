@@ -74,6 +74,7 @@ function fsn_options() {
 function fsn_update() {
     register_setting('fsn_settings', 'fsn-highlight-color');
     register_setting('fsn_settings', 'fsn-shipping-min');
+    register_setting('fsn_settings', 'fsn-countries[]');
 }
 
 function fsn_options_page() {
