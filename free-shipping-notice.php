@@ -47,7 +47,7 @@ function shipping_notice_cart() {
 function shipping_notice_checkout() {
     $totalamount = WC()->cart->cart_contents_total;
     if ($totalamount < get_option('fsn-shipping-min'))
-        echo '<tr><td colspan="2" style="text-align: center;">'.fsn_message($totalamount).'</td></tr>';
+        echo fsn_message($totalamount);
 }
 
 function fsn_message($totalamount) {
