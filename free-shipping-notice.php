@@ -74,7 +74,7 @@ function fsn_options() {
 function fsn_update() {
     register_setting('fsn_settings', 'fsn-highlight-color');
     register_setting('fsn_settings', 'fsn-shipping-min');
-    register_setting('fsn_settings', 'fsn-countries[]');
+    register_setting('fsn_settings', 'fsn-countries');
 }
 
 function fsn_options_page() {
@@ -95,7 +95,6 @@ function fsn_options_page() {
                 $countries   = $countries_obj->__get('countries');
                 foreach($countries as $country) {
                     echo "<option ".(in_array($country,get_option('fsn-countries')) ? "selected" : "")."'>$country</option>";
-                    echo "<script type='text/javascript'>alert($country));</script>";
                 }?>
             </select>
             <?php submit_button(); ?>
