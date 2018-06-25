@@ -40,7 +40,7 @@ function shipping_notice() {
     $totalamount = WC()->cart->cart_contents_total;
     if($totalamount < get_option('fsn-shipping-min'))
         echo '<tr><td colspan="2" style="text-align: center;">You\'re <span class="freeship">$' . (get_option('fsn-shipping-min')-$totalamount) .
-            '</span> away from free shipping!<br><br></td></tr>';
+            '</span> away from free shipping!</td></tr>';
 }
 
 function fsn_css() {
