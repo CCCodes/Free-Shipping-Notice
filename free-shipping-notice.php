@@ -57,6 +57,6 @@ function fsn_update() {
 
 if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) )) {
     add_action( 'woocommerce_proceed_to_checkout', 'shipping_notice');
-    add_action( 'wp_head', 'my_css' );
+    add_action( 'wp_head', 'fsn_css' );
     add_action('admin_menu', 'fsn_options');
 }
