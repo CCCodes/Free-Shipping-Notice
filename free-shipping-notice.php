@@ -35,7 +35,7 @@ function fsn_options() {
         'manage_options',
         'fsn_options',
         'fsn_options_page');
-    add_action('admin_init', 'fsn_update')
+    add_action('admin_init', 'fsn_update');
 }
 
 function fsn_options_page() {
