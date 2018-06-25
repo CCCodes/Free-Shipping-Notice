@@ -40,16 +40,18 @@ function fsn_load_scripts() {
 
 function shipping_notice_cart() {
     $totalamount = WC()->cart->cart_contents_total;
-    if($totalamount < get_option('fsn-shipping-min'))
-        echo 'You\'re <span class="freeship">$' . (get_option('fsn-shipping-min')-$totalamount) .
-            '</span> away from free shipping!<br><br>';
+    if ($totalamount < get_option('fsn-shipping-min'))
+        echo fsn_message($totalamount).'<br><br>';
 }
 
 function shipping_notice_checkout() {
     $totalamount = WC()->cart->cart_contents_total;
-    if($totalamount < get_option('fsn-shipping-min'))
-        echo '<tr><td colspan="2" style="text-align: center;">You\'re <span class="freeship">$' . (get_option('fsn-shipping-min')-$totalamount) .
-            '</span> away from free shipping!</td></tr>';
+    if ($totalamount < get_option('fsn-shipping-min'))
+        echo '<tr><td colspan="2" style="text-align: center;">'.fsn_message($totalamount).'</td></tr>';
+}
+
+function fsn_message($totalamount) {
+    return "You\'re <span class='freeship'>$" . (get_option('fsn-shipping-min')-$totalamount) . "</span> away from free shipping!";
 }
 
 function fsn_css() {
