@@ -38,7 +38,7 @@ function fsn_color_picker() {
 function shipping_notice() {
     $totalamount = WC()->cart->cart_contents_total;
     if($totalamount < 50)
-        echo 'You\'re <span class="freeship">$' . (get_option('fsn-shipping-min]')-$totalamount) . '</span> away from free shipping!<br><br>';
+        echo 'You\'re <span class="freeship">$' . (get_option('fsn-shipping-min')-$totalamount) . '</span> away from free shipping!<br><br>';
 }
 
 function fsn_css() {
@@ -46,7 +46,7 @@ function fsn_css() {
 	.freeship {
              font-weight: 500;
              color: #" .
-      (get_option('fsn-highlight-color]') == '' ? 'ff0000' : get_option('fsn-highlight-color]')) . "
+      (get_option('fsn-highlight-color') == '' ? 'ff0000' : get_option('fsn-highlight-color')) . "
 	</style>");
 }
 
