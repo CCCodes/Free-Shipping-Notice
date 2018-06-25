@@ -91,11 +91,17 @@ function fsn_options_page() {
             <label for="fsn-countries">Free Shipping Countries</label>
             <select multiple data-placeholder="Choose a country..." class="chosen-select" id="fsn-countries" name="fsn-countries[]">
                 <?php $option = get_option('fsn-countries'); ?>
+                <list>
+                    <?php
+                    foreach($option as $country) {
+                        echo "<ul>".$country."</ul>";
+                    }
+                    ?>
+                </list>
                 <?php
                 $countries_obj = new WC_Countries();
-                $countries   = $countries_obj->__get('countries');
+                $countries = $countries_obj->__get('countries');
                 foreach($countries as $country) {
-
                     echo "<option ".(in_array($country,$option) ? "selected" : "")."'>$country</option>";
                 }?>
             </select>
