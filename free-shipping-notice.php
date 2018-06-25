@@ -42,9 +42,9 @@ function fsn_options_page() {
     ?>
     <div>
         <form method="post" action="options.php">
-            <?php settings_fields('fsn-settings'); ?>
-            <?php do_settings_sections('fsn-settings'); ?>
-            <input type="text" name="fsn-color" value="<?php echo get_option('fsn-color');?>"/>
+            <?php settings_fields('fsn_settings'); ?>
+            <?php do_settings_sections('fsn_settings'); ?>
+            <input type="text" name="fsn_color" value="<?php echo get_option('fsn_color');?>"/>
             <?php submit_button(); ?>
         </form>
     </div>
@@ -52,7 +52,7 @@ function fsn_options_page() {
 }
 
 function fsn_update() {
-    register_setting('fsn_settings', 'fsn-color');
+    register_setting('fsn_settings', 'fsn_color');
 }
 
 if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) )) {
