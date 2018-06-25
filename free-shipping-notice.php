@@ -30,8 +30,8 @@ function fsn_init () {
 }
 
 function fsn_color_picker() {
-    wp_enqueue_script( 'iris',get_template_directory_uri().'/assets/iris.min.js' );
-    wp_enqueue_script( 'iris-init',get_template_directory_uri().'/assets/iris-init.js' );
+    wp_enqueue_script( 'iris',plugin_dir_path('/assets/iris.min.js') );
+    wp_enqueue_script( 'iris-init',plugin_dir_path('/assets/iris-init.js') );
 
 }
 
