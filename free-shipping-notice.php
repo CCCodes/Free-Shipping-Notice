@@ -93,7 +93,7 @@ function fsn_options_page() {
                 $countries_obj = new WC_Countries();
                 $countries   = $countries_obj->__get('countries');
                 foreach($countries as $country) {
-                    echo "<option selected='".(get_option('fsn-countries[]')[$country] ? "true" : "false")."'>$country</option>";
+                    echo "<option selected='".(in_array($country,get_option('fsn-countries[]')) ? "true" : "false")."'>$country</option>";
                 }?>
             </select>
             <?php submit_button(); ?>
