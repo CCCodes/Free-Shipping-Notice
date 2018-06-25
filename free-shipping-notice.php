@@ -92,7 +92,8 @@ function fsn_options_page() {
             <select multiple data-placeholder="Choose a country..." class="chosen-select" id="fsn-countries" name="fsn-countries[]">
                 <?php $option = get_option('fsn-countries'); ?>
                 <?php
-                debug_to_console(gettype($option));
+                debug_to_console("Array length:".count($option));
+                debug_to_console("First element:".$option[0]);
                 $countries_obj = new WC_Countries();
                 $countries = $countries_obj->__get('countries');
                 foreach($countries as $country) {
