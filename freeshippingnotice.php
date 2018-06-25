@@ -2,7 +2,7 @@
 
 /*
 Plugin Name: Free Shipping Notice
-Description: A plugin that shows
+Description: A plugin that shows how much more a customer needs to spend before they receive a free shipping reward.
 Version: 1.0
 Author: Caitlin Chou
 Author URI: http://caitlinchou.me
