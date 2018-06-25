@@ -23,13 +23,13 @@ function fsn_init () {
         add_action( 'woocommerce_proceed_to_checkout', 'shipping_notice');
         add_action( 'wp_head', 'fsn_css' );
         add_action('admin_menu', 'fsn_options');
-        add_action( 'admin_enqueue_scripts', 'softlights_color_picker' );
+        add_action( 'admin_enqueue_scripts', 'fsn_color_picker' );
     } else {
         add_action('admin_notices', 'fsn_missing_wc');
     }
 }
 
-function my_color_picker() {
+function fsn_color_picker() {
     wp_enqueue_script( 'iris',get_template_directory_uri().'/assets/iris.min.js' );
     wp_enqueue_script( 'iris-init',get_template_directory_uri().'/assets/iris-init.js' );
 
