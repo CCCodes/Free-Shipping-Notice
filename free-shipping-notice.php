@@ -90,11 +90,13 @@ function fsn_options_page() {
             <input type="number" name="fsn-shipping-min" id='fsn-shipping-min' value="<?php echo get_option('fsn-shipping-min', 50);?>" /><br/>
             <label for="fsn-countries">Free Shipping Countries</label>
             <select multiple data-placeholder="Choose a country..." class="chosen-select" id="fsn-countries" name="fsn-countries[]">
+                <?php $option = get_option('fsn-countries'); ?>
                 <?php
                 $countries_obj = new WC_Countries();
                 $countries   = $countries_obj->__get('countries');
                 foreach($countries as $country) {
-                    echo "<option ".(in_array($country,get_option('fsn-countries')) ? "selected" : "")."'>$country</option>";
+
+                    echo "<option ".(in_array($country,$option)) ? "selected" : "")."'>$country</option>";
                 }?>
             </select>
             <?php submit_button(); ?>
