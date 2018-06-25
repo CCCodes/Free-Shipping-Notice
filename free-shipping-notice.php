@@ -1,11 +1,12 @@
 <?php
 
 /*
-Plugin Name: Free Shipping Notice
+Plugin Name: Free Shipping Notice for WooCommerce
 Description: A plugin that shows how much more a customer needs to spend before they receive a free shipping reward.
 Version: 1.0
 Author: Caitlin Chou
 Author URI: http://caitlinchou.me
+Text Domain: free-shipping-notice-for-woocommerce
 Copyright: © 2018 Caitlin Chou.
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -13,6 +14,17 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
+}
+
+add_action('init', 'fsn_init');
+function fsn_init () {
+    if (class_exists('WooCommerce')) {
+        add_action( 'woocommerce_proceed_to_checkout', 'shipping_notice');
+        add_action( 'wp_head', 'fsn_css' );
+        add_action('admin_menu', 'fsn_options');
+    } else {
+        add_action('admin_notices', 'fsn_missing_wc')
+    }
 }
 
 function shipping_notice() {
@@ -25,7 +37,8 @@ function fsn_css() {
   echo ("<style type='text/css'>
 	.freeship {
              font-weight: 500;
-             color: #" . get_option('fsn_color') . "
+             color: #" .
+      (ctype_xdigit(get_option('fsn_color')) && strlen(get_option('fsn_color')) == 6 ? 'ff0000' : get_option('fsn_color')) . "
 	</style>");
 }
 
@@ -36,11 +49,15 @@ function fsn_options() {
         'fsn_options',
         'fsn_options_page');
     add_action('admin_init', 'fsn_update');
+    function fsn_update() {
+        register_setting('fsn_settings', 'fsn_color');
+    }
 }
 
 function fsn_options_page() {
     ?>
-    <div>
+    <div class="wrap">
+        <h1>Free Shipping Notice</h1>
         <form method="post" action="options.php">
             <?php settings_fields('fsn_settings'); ?>
             <?php do_settings_sections('fsn_settings'); ?>
@@ -51,12 +68,11 @@ function fsn_options_page() {
 <?php
 }
 
-function fsn_update() {
-    register_setting('fsn_settings', 'fsn_color');
-}
+function fsn_missing_wc() {
+    ?>
+    <div class="error notice">
+        <p><?php _e( 'You need to install and activate WooCommerce in order to use Free Shipping Notice!', 'free-shipping-notice-for-woocommerce')
 
-if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) )) {
-    add_action( 'woocommerce_proceed_to_checkout', 'shipping_notice');
-    add_action( 'wp_head', 'fsn_css' );
-    add_action('admin_menu', 'fsn_options');
+        </p>
+    </div>
 }
