@@ -57,10 +57,10 @@ function fsn_options() {
         'fsn_options',
         'fsn_options_page');
     add_action('admin_init', 'fsn_update');
-    function fsn_update() {
-        register_setting('fsn_settings', 'fsn-options[highlight-color]');
-        register_setting('fsn_settings', 'fsn-options[shipping-min]');
-    }
+}
+function fsn_update() {
+    register_setting('fsn_settings', 'fsn-options[highlight-color]');
+    register_setting('fsn_settings', 'fsn-options[shipping-min]');
 }
 
 function fsn_options_page() {
