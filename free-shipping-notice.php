@@ -34,7 +34,7 @@ function fsn_load_scripts() {
     wp_enqueue_script( 'iris',plugin_dir_url(__FILE__).('/assets/iris.min.js') );
     wp_enqueue_script( 'iris-init',plugin_dir_url(__FILE__).('/assets/iris-init.js') );
     wp_enqueue_script( 'chosen',plugin_dir_url(__FILE__).('/assets/chosen.jquery.min.js') );
-    wp_enqueue_script( 'chosen',plugin_dir_url(__FILE__).('/assets/chosen.min.css') );
+    wp_enqueue_script( 'chosen-init',plugin_dir_url(__FILE__).('/assets/chosen-init.js') );
 
 }
 
