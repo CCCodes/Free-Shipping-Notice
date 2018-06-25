@@ -35,19 +35,28 @@ function fsn_options() {
         'manage_options',
         'fsn_options',
         'fsn_options_page');
+    add_action('admin_init', 'fsn_update')
 }
 
 function fsn_options_page() {
     ?>
     <div>
         <form method="post" action="options.php">
+            <?php settings_fields('fsn-settings'); ?>
+            <?php do_settings_sections('fsn-settings'); ?>
+            <input type="text" name="fsn-color" value="<?php echo get_option('fsn-color');?>"/>
             <?php submit_button(); ?>
         </form>
     </div>
 <?php
 }
 
+function fsn_update() {
+    register_setting('fsn_settings', 'fsn-color');
+}
+
 if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) )) {
     add_action( 'woocommerce_proceed_to_checkout', 'shipping_notice');
     add_action( 'wp_head', 'my_css' );
+    add_action('admin_menu', 'fsn_options');
 }
