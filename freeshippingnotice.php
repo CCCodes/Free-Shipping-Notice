@@ -21,12 +21,30 @@ function shipping_notice() {
         echo 'You\'re <span class="freeship">$' . (50-$totalamount) . '</span> away from free shipping!<br><br>';
 }
 
-function my_css() {
+function fsn_css() {
   echo "<style type='text/css'>
 	.freeship {
              font-weight: 500;
              color: #960740;
 	</style>";
+}
+
+function fsn_options() {
+    add_options_page('Free Shipping Notice Options',
+        'Free Shipping Notice',
+        'manage_options',
+        'fsn_options',
+        'fsn_options_page');
+}
+
+function fsn_options_page() {
+    ?>
+    <div>
+        <form method="post" action="options.php">
+            <?php submit_button(); ?>
+        </form>
+    </div>
+<?php
 }
 
 if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) )) {
