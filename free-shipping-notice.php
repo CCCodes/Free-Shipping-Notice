@@ -24,15 +24,17 @@ function fsn_init () {
         add_action( 'woocommerce_review_order_before_shipping', 'shipping_notice_checkout');
         add_action( 'wp_head', 'fsn_css' );
         add_action('admin_menu', 'fsn_options');
-        add_action( 'admin_enqueue_scripts', 'fsn_color_picker' );
+        add_action( 'admin_enqueue_scripts', 'fsn_load_scripts' );
     } else {
         add_action('admin_notices', 'fsn_missing_wc');
     }
 }
 
-function fsn_color_picker() {
+function fsn_load_scripts() {
     wp_enqueue_script( 'iris',plugin_dir_url(__FILE__).('/assets/iris.min.js') );
     wp_enqueue_script( 'iris-init',plugin_dir_url(__FILE__).('/assets/iris-init.js') );
+    wp_enqueue_script( 'chosen',plugin_dir_url(__FILE__).('/assets/chosen.jquery.min.js') );
+    wp_enqueue_script( 'chosen',plugin_dir_url(__FILE__).('/assets/chosen.min.css') );
 
 }
 
@@ -83,6 +85,12 @@ function fsn_options_page() {
             <input type="text" class="color-picker" name="fsn-highlight-color" id="color-picker" value="<?php echo get_option('fsn-highlight-color', '#ff0000')?>" />
             <label for="fsn-shipping-min">Free Shipping Minimum ($)</label>
             <input type="number" name="fsn-shipping-min" id='fsn-shipping-min' value="<?php echo get_option('fsn-shipping-min', 50);?>" />
+            <label for="fsn-countries">Free Shipping Countries</label>
+            <select multiple data-placeholder="Choose a country..." class="chosen-select" id="fsn-countries" name="fsn-countries[]">
+                <?php foreach(WC()->countries as $country) {
+                    echo "<option>$country</option>";
+                }?>
+            </select>
             <?php submit_button(); ?>
         </form>
     </div>
@@ -92,7 +100,7 @@ function fsn_options_page() {
 function fsn_missing_wc() {
     ?>
     <div class="error notice">
-        <p><?php _e( 'You need to install and activate WooCommerce in order to use Free Shipping Notice!', 'free-shipping-notice-for-woocommerce')?>
+        <p><?php _e('You need to install and activate WooCommerce in order to use Free Shipping Notice!', 'free-shipping-notice-for-woocommerce')?>
 
         </p>
     </div>
