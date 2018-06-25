@@ -16,7 +16,15 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 
+add_action( 'admin_enqueue_scripts', 'softlights_color_picker' );
+function my_color_picker() {
+    wp_enqueue_script( 'iris',get_template_directory_uri().'/assets/iris.min.js' );
+    wp_enqueue_script( 'iris-init',get_template_directory_uri().'/assets/iris-init.js' );
+
+}
+
 add_action('init', 'fsn_init');
+
 function fsn_init () {
     if (class_exists('WooCommerce')) {
         add_action( 'woocommerce_proceed_to_checkout', 'shipping_notice');
@@ -38,7 +46,7 @@ function fsn_css() {
 	.freeship {
              font-weight: 500;
              color: #" .
-      (ctype_xdigit(get_option('fsn_color')) && strlen(get_option('fsn_color')) == 6 ? 'ff0000' : get_option('fsn_color')) . "
+      (get_option('sfn-options[highlight-color]') == '' ? 'ff0000' : get_option('sfn-options[highlight-color]')) . "
 	</style>");
 }
 
@@ -61,7 +69,8 @@ function fsn_options_page() {
         <form method="post" action="options.php">
             <?php settings_fields('fsn_settings'); ?>
             <?php do_settings_sections('fsn_settings'); ?>
-            Color #<input type="text" name="fsn_color" value="<?php echo get_option('fsn_color');?>" placeholder="ff0000"/>
+            <label for="color-picker">Color</label>
+            <input type="text" class="color-picker" name="sfn-options[highlight-color]" id='color-picker' value="#<?php echo get_option('sfn-options[highlight-color]');?>" placeholder="#ff0000" />
             <?php submit_button(); ?>
         </form>
     </div>
