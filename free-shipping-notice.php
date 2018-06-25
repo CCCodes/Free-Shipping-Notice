@@ -84,9 +84,9 @@ function fsn_options_page() {
             <?php settings_fields('fsn_settings'); ?>
             <?php do_settings_sections('fsn_settings'); ?>
             <label for="color-picker">Color</label>
-            <input type="text" class="color-picker" name="fsn-highlight-color" id="color-picker" value="<?php echo get_option('fsn-highlight-color', '#ff0000')?>" />
+            <input type="text" class="color-picker" name="fsn-highlight-color" id="color-picker" value="<?php echo get_option('fsn-highlight-color', '#ff0000')?>" /><br/>
             <label for="fsn-shipping-min">Free Shipping Minimum ($)</label>
-            <input type="number" name="fsn-shipping-min" id='fsn-shipping-min' value="<?php echo get_option('fsn-shipping-min', 50);?>" />
+            <input type="number" name="fsn-shipping-min" id='fsn-shipping-min' value="<?php echo get_option('fsn-shipping-min', 50);?>" /><br/>
             <label for="fsn-countries">Free Shipping Countries</label>
             <select multiple data-placeholder="Choose a country..." class="chosen-select" id="fsn-countries" name="fsn-countries[]">
                 <?php foreach(WC()->countries as $country) {
