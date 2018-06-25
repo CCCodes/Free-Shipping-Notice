@@ -21,6 +21,7 @@ add_action('init', 'fsn_init');
 function fsn_init () {
     if (class_exists('WooCommerce')) {
         add_action( 'woocommerce_proceed_to_checkout', 'shipping_notice');
+        add_action( 'woocommerce_review_order_before_shipping', 'shipping_notice');
         add_action( 'wp_head', 'fsn_css' );
         add_action('admin_menu', 'fsn_options');
         add_action( 'admin_enqueue_scripts', 'fsn_color_picker' );
