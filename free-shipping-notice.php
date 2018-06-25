@@ -38,7 +38,7 @@ function fsn_color_picker() {
 function shipping_notice() {
     $totalamount = WC()->cart->cart_contents_total;
     if($totalamount < 50)
-        echo 'You\'re <span class="freeship">$' . (get_option('sfn-options[shipping-min]')-$totalamount) . '</span> away from free shipping!<br><br>';
+        echo 'You\'re <span class="freeship">$' . (get_option('fsn-options[shipping-min]')-$totalamount) . '</span> away from free shipping!<br><br>';
 }
 
 function fsn_css() {
@@ -46,7 +46,7 @@ function fsn_css() {
 	.freeship {
              font-weight: 500;
              color: #" .
-      (get_option('sfn-options[highlight-color]') == '' ? 'ff0000' : get_option('sfn-options[highlight-color]')) . "
+      (get_option('fsn-options[highlight-color]') == '' ? 'ff0000' : get_option('fsn-options[highlight-color]')) . "
 	</style>");
 }
 
@@ -70,9 +70,9 @@ function fsn_options_page() {
             <?php settings_fields('fsn_settings'); ?>
             <?php do_settings_sections('fsn_settings'); ?>
             <label for="fsn-color-picker">Color</label>
-            <input type="text" class="color-picker" name="sfn-options[highlight-color]" id='fsn-color-picker' value="#<?php echo get_option('sfn-options[highlight-color]');?>" placeholder="#ff0000" />
+            <input type="text" class="color-picker" name="fsn-options[highlight-color]" id='fsn-color-picker' value="#<?php echo get_option('fsn-options[highlight-color]');?>" placeholder="#ff0000" />
             <label for="fsn-shipping-min">Free Shipping Minimum ($)</label>
-            <input type="number" name="sfn-options[shipping-min]" id='fsn-shipping-min' value="#<?php echo get_option('sfn-options[shipping-min]');?>" placeholder="50" />
+            <input type="number" name="fsn-options[shipping-min]" id='fsn-shipping-min' value="#<?php echo get_option('fsn-options[shipping-min]');?>" placeholder="50" />
             <?php submit_button(); ?>
         </form>
     </div>
