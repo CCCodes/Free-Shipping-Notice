@@ -71,8 +71,9 @@ function fsn_options_page() {
 function fsn_missing_wc() {
     ?>
     <div class="error notice">
-        <p><?php _e( 'You need to install and activate WooCommerce in order to use Free Shipping Notice!', 'free-shipping-notice-for-woocommerce')
+        <p><?php _e( 'You need to install and activate WooCommerce in order to use Free Shipping Notice!', 'free-shipping-notice-for-woocommerce')?>
 
         </p>
     </div>
+<?php
 }
