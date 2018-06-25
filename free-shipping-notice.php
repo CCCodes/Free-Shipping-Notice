@@ -93,9 +93,9 @@ function fsn_options_page() {
                 <?php
                 $countries_obj = new WC_Countries();
                 $countries   = $countries_obj->__get('countries');
-                echo "<script type='text/javascript'>alert(".get_option('fsn-highlight-color').");</script>";
                 foreach($countries as $country) {
                     echo "<option ".(in_array($country,get_option('fsn-countries')) ? "selected" : "")."'>$country</option>";
+                    echo "<script type='text/javascript'>alert($country));</script>";
                 }?>
             </select>
             <?php submit_button(); ?>
