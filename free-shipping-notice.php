@@ -43,7 +43,6 @@ function shipping_notice_cart() {
     $location = WC_Geolocation::geolocate_ip();
     $country_code = $location['country'];
     $country = WC()->countries->countries[$country_code];
-    debug_to_console($country);
     if ($totalamount < get_option('fsn-shipping-min') && in_array($country, get_option("fsn-countries")))
         echo fsn_message($totalamount).'<br><br>';
 }
@@ -99,8 +98,6 @@ function fsn_options_page() {
             <select multiple data-placeholder="Choose a country..." class="chosen-select" id="fsn-countries" name="fsn-countries[]">
                 <?php $option = get_option('fsn-countries'); ?>
                 <?php
-                debug_to_console("Array length:".count($option));
-                debug_to_console("First element:".$option[0]);
                 $countries_obj = new WC_Countries();
                 $countries = $countries_obj->__get('countries');
                 foreach($countries as $country) {
@@ -121,12 +118,4 @@ function fsn_missing_wc() {
         </p>
     </div>
 <?php
-}
-
-function debug_to_console( $data ) {
-    $output = $data;
-    if ( is_array( $output ) )
-        $output = implode( ',', $output);
-
-    echo "<script>console.log( 'Debug: " . $output . "' );</script>";
 }
