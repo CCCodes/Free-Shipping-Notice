@@ -44,7 +44,7 @@ function shipping_notice_cart() {
     $country_code = $location['country'];
     $country = WC()->countries->countries[$country_code];
     $free_shipping_countries = get_option("fsn-countries");
-    if ($totalamount < get_option('fsn-shipping-min') && (count($free_shipping_countries)==0 || in_array($country, $free_shipping_countries) || get_option("fsn-all-countries")=="All"))
+    if ($totalamount < get_option('fsn-shipping-min') && (count($free_shipping_countries)=="" || in_array($country, $free_shipping_countries) || get_option("fsn-all-countries")=="All"))
         echo fsn_message($totalamount).'<br><br>';
 }
 
@@ -54,7 +54,7 @@ function shipping_notice_checkout() {
     $country_code = $location['country'];
     $country = WC()->countries->countries[$country_code];
     $free_shipping_countries = get_option("fsn-countries");
-    if ($totalamount < get_option('fsn-shipping-min') && (count($free_shipping_countries)==0 || in_array($country, $free_shipping_countries) || get_option("fsn-all-countries")=="All"))
+    if ($totalamount < get_option('fsn-shipping-min') && (count($free_shipping_countries)=="" || in_array($country, $free_shipping_countries) || get_option("fsn-all-countries")=="All"))
         echo fsn_message($totalamount);
 }
 
