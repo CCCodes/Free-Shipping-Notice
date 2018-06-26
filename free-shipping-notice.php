@@ -43,7 +43,7 @@ function shipping_notice_cart() {
     $location = WC_Geolocation::geolocate_ip();
     $country_code = $location['country'];
     $country = WC()->countries->countries[$country_code];
-    if ($totalamount < get_option('fsn-shipping-min') && in_array($country, get_option("fsn-countries")))
+    if ($totalamount < get_option('fsn-shipping-min') && (in_array($country, get_option("fsn-countries")) || get_option("fsn-all-countries")=="all"))
         echo fsn_message($totalamount).'<br><br>';
 }
 
@@ -52,7 +52,7 @@ function shipping_notice_checkout() {
     $location = WC_Geolocation::geolocate_ip();
     $country_code = $location['country'];
     $country = WC()->countries->countries[$country_code];
-    if ($totalamount < get_option('fsn-shipping-min') && in_array($country, get_option("fsn-countries")))
+    if ($totalamount < get_option('fsn-shipping-min') && (in_array($country, get_option("fsn-countries")) || get_option("fsn-all-countries")=="all"))
         echo fsn_message($totalamount);
 }
 
@@ -81,6 +81,7 @@ function fsn_update() {
     register_setting('fsn_settings', 'fsn-highlight-color');
     register_setting('fsn_settings', 'fsn-shipping-min');
     register_setting('fsn_settings', 'fsn-countries');
+    register_setting('fsn_settings', 'fsn-all-countries');
 }
 
 function fsn_options_page() {
@@ -98,6 +99,10 @@ function fsn_options_page() {
                 <tr>
                     <td><label for="fsn-shipping-min">Free Shipping Minimum ($)</label></td>
                     <td><input type="number" name="fsn-shipping-min" id='fsn-shipping-min' value="<?php echo get_option('fsn-shipping-min', 50);?>" /></td>
+                </tr>
+                <tr>
+                    <td><label for="fsn-all-countries">Enable for all countries?</label></td>
+                    <td><input type="radio" id="fsn-all-countries" value="<?php echo get_option('fsn-all-countries');?>" /></td>
                 </tr>
                 <tr>
                     <td><label for="fsn-countries">Free Shipping Countries</label></td>
