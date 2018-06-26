@@ -53,12 +53,6 @@ function shipping_notice_checkout() {
     $location = WC_Geolocation::geolocate_ip();
     $country_code = $location['country'];
     $country = WC()->countries->countries[$country_code];
-    if ($country)
-    debug_to_console($country);
-    debug_to_console('Countries in list: ')
-    foreach(get_option("fsn-countries") as $c) {
-        debug_to_console($c)
-    }
     if ($totalamount < get_option('fsn-shipping-min') && in_array($country, get_option("fsn-countries")))
         echo fsn_message($totalamount);
 }
