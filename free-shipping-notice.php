@@ -90,20 +90,30 @@ function fsn_options_page() {
         <form method="post" action="options.php">
             <?php settings_fields('fsn_settings'); ?>
             <?php do_settings_sections('fsn_settings'); ?>
-            <label for="color-picker">Color</label>
-            <input type="text" class="color-picker" name="fsn-highlight-color" id="color-picker" value="<?php echo get_option('fsn-highlight-color', '#ff0000')?>" /><br/>
-            <label for="fsn-shipping-min">Free Shipping Minimum ($)</label>
-            <input type="number" name="fsn-shipping-min" id='fsn-shipping-min' value="<?php echo get_option('fsn-shipping-min', 50);?>" /><br/>
-            <label for="fsn-countries">Free Shipping Countries</label>
-            <select multiple data-placeholder="Choose a country..." class="chosen-select" id="fsn-countries" name="fsn-countries[]">
-                <?php $option = get_option('fsn-countries'); ?>
-                <?php
-                $countries_obj = new WC_Countries();
-                $countries = $countries_obj->__get('countries');
-                foreach($countries as $country) {
-                    echo "<option ".(in_array($country,$option) ? "selected" : "").">$country</option>";
-                }?>
-            </select>
+            <table>
+                <tr>
+                    <td><label for="color-picker">Color</label></td>
+                    <td><input type="text" class="color-picker" name="fsn-highlight-color" id="color-picker" value="<?php echo get_option('fsn-highlight-color', '#ff0000')?>" /></td>
+                </tr>
+                <tr>
+                    <td><label for="fsn-shipping-min">Free Shipping Minimum ($)</label></td>
+                    <td><input type="number" name="fsn-shipping-min" id='fsn-shipping-min' value="<?php echo get_option('fsn-shipping-min', 50);?>" /></td>
+                </tr>
+                <tr>
+                    <td><label for="fsn-countries">Free Shipping Countries</label></td>
+                    <td>
+                        <select multiple data-placeholder="Choose a country..." class="chosen-select" id="fsn-countries" name="fsn-countries[]">
+                            <?php $option = get_option('fsn-countries'); ?>
+                            <?php
+                            $countries_obj = new WC_Countries();
+                            $countries = $countries_obj->__get('countries');
+                            foreach($countries as $country) {
+                                echo "<option ".(in_array($country,$option) ? "selected" : "").">$country</option>";
+                            }?>
+                        </select>
+                    </td>
+                </tr>
+            </table>
             <?php submit_button(); ?>
         </form>
     </div>
