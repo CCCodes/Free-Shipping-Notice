@@ -97,7 +97,7 @@ function fsn_options_page() {
                 $countries_obj = new WC_Countries();
                 $countries = $countries_obj->__get('countries');
                 foreach($countries as $country) {
-                    echo "<option ".(in_array($country,$option)==1 ? "selected" : "")."'>$country</option>";
+                    echo "<option ".(in_array($country,$option)==True ? "selected" : "")."'>$country</option>";
                 }?>
             </select>
             <?php submit_button(); ?>
