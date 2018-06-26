@@ -102,7 +102,7 @@ function fsn_options_page() {
                 </tr>
                 <tr>
                     <td><label for="fsn-all-countries">Enable for all countries?</label></td>
-                    <td><input type="radio" id="fsn-all-countries" value="<?php echo get_option('fsn-all-countries');?>" /></td>
+                    <td><input type="checkbox" id="fsn-all-countries" value="All" <?php echo (get_option('fsn-all-countries')=="All" ? 'checked' : '');?>" /></td>
                 </tr>
                 <tr>
                     <td><label for="fsn-countries">Free Shipping Countries</label></td>
