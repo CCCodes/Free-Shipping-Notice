@@ -43,6 +43,7 @@ function shipping_notice_cart() {
     $location = WC_Geolocation::geolocate_ip();
     $country_code = $location['country'];
     $country = WC()->countries->countries[$country_code];
+    debug_to_console($country);
     if ($totalamount < get_option('fsn-shipping-min') && in_array($country, get_option("fsn-countries")))
         echo fsn_message($totalamount).'<br><br>';
 }
@@ -52,7 +53,8 @@ function shipping_notice_checkout() {
     $location = WC_Geolocation::geolocate_ip();
     $country_code = $location['country'];
     $country = WC()->countries->countries[$country_code];
-    if ($totalamount < get_option('fsn-shipping-min') && get_option("fsn-countries"))
+    debug_to_console($country);
+    if ($totalamount < get_option('fsn-shipping-min') && in_array($country, get_option("fsn-countries")))
         echo fsn_message($totalamount);
 }
 
