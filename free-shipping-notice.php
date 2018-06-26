@@ -43,7 +43,10 @@ function shipping_notice_cart() {
     $location = WC_Geolocation::geolocate_ip();
     $country_code = $location['country'];
     $country = WC()->countries->countries[$country_code];
-    if ($totalamount < get_option('fsn-shipping-min') && (in_array($country, get_option("fsn-countries")) || get_option("fsn-all-countries")=="all"))
+    $free_shipping_countries = get_option("fsn-countries");
+    if (count($free_shipping_countries)==0 && get_option("fsn-all-countries")!="All")
+        array_push($free_shipping_countries, "United States (US)");
+    if ($totalamount < get_option('fsn-shipping-min') && (in_array($country, $free_shipping_countries) || get_option("fsn-all-countries")=="All"))
         echo fsn_message($totalamount).'<br><br>';
 }
 
@@ -52,7 +55,10 @@ function shipping_notice_checkout() {
     $location = WC_Geolocation::geolocate_ip();
     $country_code = $location['country'];
     $country = WC()->countries->countries[$country_code];
-    if ($totalamount < get_option('fsn-shipping-min') && (in_array($country, get_option("fsn-countries")) || get_option("fsn-all-countries")=="all"))
+    $free_shipping_countries = get_option("fsn-countries");
+    if (count($free_shipping_countries)==0 && get_option("fsn-all-countries")!="All")
+        array_push($free_shipping_countries, "United States (US)");
+    if ($totalamount < get_option('fsn-shipping-min') && (in_array($country, $free_shipping_countries) || get_option("fsn-all-countries")=="All"))
         echo fsn_message($totalamount);
 }
 
@@ -97,7 +103,7 @@ function fsn_options_page() {
                     <td><input type="text" class="color-picker" name="fsn-highlight-color" id="color-picker" value="<?php echo get_option('fsn-highlight-color', '#ff0000')?>" /></td>
                 </tr>
                 <tr>
-                    <td><label for="fsn-shipping-min">Free Shipping Minimum ($)</label></td>
+                    <td><label for="fsn-shipping-min">Free Shipping Minimum (<?php echo get_woocommerce_currency()?>)</label></td>
                     <td><input type="number" name="fsn-shipping-min" id='fsn-shipping-min' value="<?php echo get_option('fsn-shipping-min', 50);?>" /></td>
                 </tr>
                 <tr>
