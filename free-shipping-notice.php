@@ -84,6 +84,7 @@ function fsn_update() {
     register_setting('fsn_settings', 'fsn-shipping-min');
     register_setting('fsn_settings', 'fsn-countries');
     register_setting('fsn_settings', 'fsn-all-countries');
+    register_setting('fsn_settings', 'fsn-default-currency');
 }
 
 function fsn_options_page() {
@@ -120,6 +121,10 @@ function fsn_options_page() {
                             }?>
                         </select>
                     </td>
+                </tr>
+                <tr>
+                    <td><label for="fsn-currency-setting">Default Currency Symbol</label></td>
+                    <td><input type="text" id="fsn-currency-setting" name="fsn-default-currency" value="<?php echo get_option('fsn-default-currency', '$');?>" /></td>
                 </tr>
             </table>
             <?php submit_button(); ?>
