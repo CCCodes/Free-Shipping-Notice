@@ -39,7 +39,8 @@ function fsn_load_scripts() {
 
 function fsn_shipping_notice_cart() {
     $totalamount = WC()->cart->cart_contents_total;
-    $location = WC_Geolocation::geolocate_ip();
+    //if (WC_Geolocation::is_geolocation_enabled($current_settings))
+        $location = WC_Geolocation::geolocate_ip();
     $country_code = $location['country'];
     $country = WC()->countries->countries[$country_code];
     $free_shipping_countries = get_option("fsn-countries");
@@ -65,7 +66,7 @@ function fsn_css() {
   echo ("<style type='text/css'>
 	.freeship {
              font-weight: 500;
-             color: " .
+             color: #" .
       (get_option('fsn-highlight-color') == '' ? 'ff0000' : get_option('fsn-highlight-color')) . "
 	</style>");
 }
@@ -106,6 +107,7 @@ function fsn_options_page() {
                     <td><label for="fsn-all-countries">Enable for all countries?</label></td>
                     <td><input type="checkbox" name="fsn-all-countries" id="fsn-all-countries" value="All" <?php echo (get_option('fsn-all-countries')=="All" ? 'checked' : '');?> /></td>
                 </tr>
+                <?php if (WC_Geolocation::is_geolocation_enabled($current_settings)) {?>
                 <tr>
                     <td><label for="fsn-countries">Free Shipping Countries</label></td>
                     <td>
@@ -120,6 +122,7 @@ function fsn_options_page() {
                         </select>
                     </td>
                 </tr>
+        <?php } ?>
                 <tr>
                     <td><label for="fsn-currency-setting">Default Currency Symbol</label></td>
                     <td><input type="text" id="fsn-currency-setting" name="fsn-default-currency" value="<?php echo get_option('fsn-default-currency', '$');?>" /></td>
