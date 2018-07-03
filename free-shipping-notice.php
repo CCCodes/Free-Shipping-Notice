@@ -2,7 +2,7 @@
 
 /*
 Plugin Name: Free Shipping Notice for WooCommerce
-Description: A plugin that shows how much more a customer needs to spend before they receive a free shipping reward.
+Description: Displays the remaining price to receive free shipping on the cart and checkout pages.
 Version: 1.0
 Author: Caitlin Chou
 Author URI: http://caitlinchou.me
