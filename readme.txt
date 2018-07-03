@@ -12,11 +12,9 @@ Displays the remaining price to receive free shipping on the cart and checkout p
 
 == Description ==
 
-Increase average order value by advertising your free shipping. Make sure your customers know about your offer through
-the Free Shipping Notice plugin.
+Increase average order value by advertising your free shipping. Make sure your customers know about your offer through the Free Shipping Notice plugin.
 
-Free Shipping Notice adds a message in your cart and checkout about the amount remaining until a customer is eligible
-for free shipping.
+Free Shipping Notice adds a message in your cart and checkout about the amount remaining until a customer is eligible for free shipping.
 
 Features
 *   **Individualized** - updates based on each customer's cart total to show remaining amount to spend
@@ -25,8 +23,7 @@ Features
 *   **Mobile-friendly** - compatible with mobile devices
 
 Note
-To use Free Shipping Notice, you must set up free shipping by adding a "free shipping" shipping method with a minimum
-\order requirement through WooCommerce shipping zones
+To use Free Shipping Notice, you must set up free shipping by adding a "free shipping" shipping method with a minimum order requirement through WooCommerce shipping zones
 
 
 == Installation ==
@@ -47,11 +44,9 @@ I would love to hear your input. Email me at caitlinchou at gmail dot com.
 
 == Screenshots ==
 
-1. On the cart page, customers will be alerted to see how much more they have to spend to reach free shipping if their
-   current total is under the free shipping amount.
+1. On the cart page, customers will be alerted to see how much more they have to spend to reach free shipping if their current total is under the free shipping amount.
 2. The checkout page also displays the free shipping notice.
-3. In settings, you can change the minimum free shipping requirement, highlight color for the notice, and countries that
-free shipping applies to.
+3. In settings, you can change the minimum free shipping requirement, highlight color for the notice, and countries that free shipping applies to.
 
 == Changelog ==
 
