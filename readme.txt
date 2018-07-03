@@ -1,7 +1,6 @@
 === Free Shipping Notice for WooCommerce ===
 
 Contributors: caitlinchou
-Donate link: http://example.com/
 Tags: woocommerce, free shipping, checkout, cart, free shipping tracker, free shipping notice, free shipping promotion, marketing
 Requires at least: 3.0.0
 Tested up to: 4.9.6
