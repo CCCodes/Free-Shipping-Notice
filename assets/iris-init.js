@@ -11,7 +11,7 @@ jQuery(document).ready(function($){
 
     });
 
-    $(this).click(function() {
-        $(this).iris('toggle'); //click came from somewhere else
-    });
+    // $(this).click(function() {
+    //     $(this).iris('toggle'); //click came from somewhere else
+    // });
 });
