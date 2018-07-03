@@ -39,9 +39,7 @@ function fsn_load_scripts() {
 
 function fsn_shipping_notice_cart() {
     $totalamount = WC()->cart->cart_contents_total;
-    //if (WC_Geolocation::is_geolocation_enabled($current_settings))
     $location = WC_Geolocation::geolocate_ip();
-    debug_to_console($location);
     $country_code = $location['country'];
     $country = WC()->countries->countries[$country_code];
     $free_shipping_countries = get_option("fsn-countries");
@@ -141,11 +139,4 @@ function fsn_missing_wc() {
         </p>
     </div>
 <?php
-}
-
-function debug_to_console( $data ) {
-    $output = $data;
-    if ( is_array( $output ) )
-        $output = implode( ',', $output);
-    echo "<script>console.log( 'Debug: " . $output . "' );</script>";
 }
