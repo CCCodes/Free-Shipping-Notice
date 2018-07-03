@@ -20,8 +20,8 @@ add_action('init', 'fsn_init');
 
 function fsn_init () {
     if (class_exists('WooCommerce')) {
-        add_action( 'woocommerce_proceed_to_checkout', 'shipping_notice_cart');
-        add_action( 'woocommerce_checkout_before_order_review', 'shipping_notice_checkout');
+        add_action( 'woocommerce_proceed_to_checkout', 'fsn_shipping_notice_cart');
+        add_action( 'woocommerce_checkout_before_order_review', 'fsn_shipping_notice_checkout');
         add_action( 'wp_head', 'fsn_css' );
         add_action('admin_menu', 'fsn_options');
         add_action( 'admin_enqueue_scripts', 'fsn_load_scripts' );
@@ -38,7 +38,7 @@ function fsn_load_scripts() {
 
 }
 
-function shipping_notice_cart() {
+function fsn_shipping_notice_cart() {
     $totalamount = WC()->cart->cart_contents_total;
     $location = WC_Geolocation::geolocate_ip();
     $country_code = $location['country'];
@@ -48,7 +48,7 @@ function shipping_notice_cart() {
         echo fsn_message($totalamount).'<br><br>';
 }
 
-function shipping_notice_checkout() {
+function fsn_shipping_notice_checkout() {
     $totalamount = WC()->cart->cart_contents_total;
     $location = WC_Geolocation::geolocate_ip();
     $country_code = $location['country'];
@@ -140,11 +140,4 @@ function fsn_missing_wc() {
         </p>
     </div>
 <?php
-}
-
-function debug_to_console( $data ) {
-        $output = $data;
-        if ( is_array( $output ) )
-            $output = implode( ',', $output);
-        echo "<script>console.log( 'Debug: " . $output . "' );</script>";
 }
