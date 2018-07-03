@@ -31,8 +31,7 @@ function fsn_init () {
 }
 
 function fsn_load_scripts() {
-    wp_enqueue_script( 'iris',plugin_dir_url(__FILE__).('/assets/iris.min.js') );
-    wp_enqueue_script( 'iris-init',plugin_dir_url(__FILE__).('/assets/iris-init.js') );
+    wp_enqueue_script( 'jscolor',plugin_dir_url(__FILE__).('/assets/jscolor.js') );
     wp_enqueue_script( 'chosen',plugin_dir_url(__FILE__).('/assets/chosen.jquery.min.js') );
     wp_enqueue_script( 'chosen-init',plugin_dir_url(__FILE__).('/assets/chosen-init.js') );
 
@@ -97,7 +96,7 @@ function fsn_options_page() {
             <table>
                 <tr>
                     <td><label for="color-picker">Color</label></td>
-                    <td><input type="text" class="color-picker" name="fsn-highlight-color" id="color-picker" value="<?php echo get_option('fsn-highlight-color', '#ff0000')?>" /></td>
+                    <td><input type="text" class="jscolor" name="fsn-highlight-color" id="color-picker" value="<?php echo get_option('fsn-highlight-color', '#ff0000')?>" /></td>
                 </tr>
                 <tr>
                     <td><label for="fsn-shipping-min">Free Shipping Minimum (<?php echo get_woocommerce_currency()?>)</label></td>
