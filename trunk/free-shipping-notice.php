@@ -3,7 +3,7 @@
 /*
 Plugin Name: Free Shipping Notice for WooCommerce
 Description: Displays the remaining price to receive free shipping on the cart and checkout pages.
-Version: 1.0
+Version: 1.1
 Author: Caitlin Chou
 Author URI: http://caitlinchou.me
 Text Domain: free-shipping-notice-for-woocommerce
@@ -59,7 +59,7 @@ function fsn_shipping_notice_checkout() {
 }
 
 function fsn_message($totalamount) {
-    return "You're <span class='freeship'>".get_option('fsn-default-currency').(get_option('fsn-shipping-min')-$totalamount)."</span> away from free shipping!";
+    return moneyformat("You're <span class='freeship'>".get_option('fsn-default-currency')."%i</span> away from free shipping!",(get_option('fsn-shipping-min')-$totalamount));
 }
 
 function fsn_css() {

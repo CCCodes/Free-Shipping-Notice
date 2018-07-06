@@ -4,7 +4,7 @@ Contributors: caitlinchou
 Tags: woocommerce, free shipping, checkout, cart, free shipping tracker, free shipping notice, free shipping promotion, marketing
 Requires at least: 3.0.0
 Tested up to: 4.9.6
-Stable tag: trunk
+Stable tag: 1.0
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -49,6 +49,9 @@ I would love to hear your input. Email me at caitlinchou at gmail dot com.
 3. In settings, you can change the minimum free shipping requirement, highlight color for the notice, and countries that free shipping applies to.
 
 == Changelog ==
+
+= 1.1 =
+* currency formatted correctly
 
 = 1.0 =
 * Initial Release
