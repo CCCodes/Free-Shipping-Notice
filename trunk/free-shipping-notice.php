@@ -59,7 +59,7 @@ function fsn_shipping_notice_checkout() {
 }
 
 function fsn_message($totalamount) {
-    return moneyformat("You're <span class='freeship'>".get_option('fsn-default-currency')."%i</span> away from free shipping!",(get_option('fsn-shipping-min')-$totalamount));
+    return money_format("You're <span class='freeship'>".get_option('fsn-default-currency')."%i</span> away from free shipping!",(get_option('fsn-shipping-min')-$totalamount));
 }
 
 function fsn_css() {
