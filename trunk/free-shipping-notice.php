@@ -125,6 +125,14 @@ function fsn_options_page() {
                     <td><label for="fsn-currency-setting">Default Currency Symbol</label></td>
                     <td><input type="text" id="fsn-currency-setting" name="fsn-default-currency" value="<?php echo get_option('fsn-default-currency', '$');?>" /></td>
                 </tr>
+                <tr>
+                    <td><label for="fsn-show-cart">Show Message on Cart?</label></td>
+                    <td><input type="checkbox" name="fsn-show-cart" id="fsn-show-cart" value="true" <?php echo (get_option('fsn-show-cart', 'true')=="true" ? 'checked' : '');?> /></td>
+                </tr>
+                <tr>
+                    <td><label for="fsn-show-checkout">Show Message on Checkout?</label></td>
+                    <td><input type="checkbox" name="fsn-show-checkout" id="fsn-show-checkout" value="true" <?php echo (get_option('fsn-show-checkout', 'true')=="true" ? 'checked' : '');?> /></td>
+                </tr>
             </table>
             <?php submit_button(); ?>
         </form>
