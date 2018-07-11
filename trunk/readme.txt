@@ -52,6 +52,7 @@ I would love to hear your input. Email me at caitlinchou at gmail dot com.
 
 = 1.1 =
 * currency formatted correctly
+* add options in settings to toggle message on cart and checkout
 
 = 1.0 =
 * Initial Release
