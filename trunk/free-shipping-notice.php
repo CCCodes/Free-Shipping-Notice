@@ -85,6 +85,8 @@ function fsn_update() {
     register_setting('fsn_settings', 'fsn-countries');
     register_setting('fsn_settings', 'fsn-all-countries');
     register_setting('fsn_settings', 'fsn-default-currency');
+    register_setting('fsn_settings', 'fsn-show-cart');
+    register_setting('fsn_settings', 'fsn-show-checkout');
 }
 
 function fsn_options_page() {
